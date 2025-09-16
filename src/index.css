@@ -69,6 +69,31 @@
       opacity: 0;
     }
   }
+  @keyframes aurora-shift {
+    0% { transform: translateY(0) translateX(0) skewX(-10deg); filter: hue-rotate(0deg); }
+    50% { transform: translateY(-20px) translateX(20px) skewX(-12deg); filter: hue-rotate(20deg); }
+    100% { transform: translateY(0) translateX(0) skewX(-10deg); filter: hue-rotate(0deg); }
+  }
+  @keyframes float-bokeh {
+    0% { transform: translateY(0) translateX(0); opacity: 0.7; }
+    25% { transform: translateY(-10px) translateX(5px); opacity: 0.9; }
+    50% { transform: translateY(-20px) translateX(0); opacity: 0.6; }
+    75% { transform: translateY(-10px) translateX(-5px); opacity: 0.8; }
+    100% { transform: translateY(0) translateX(0); opacity: 0.7; }
+  }
+  /* New light mode animations */
+  @keyframes sun-glow {
+    0%, 100% { box-shadow: 0 0 60px 30px rgba(255, 200, 50, 0.35); }
+    50% { box-shadow: 0 0 80px 40px rgba(255, 200, 50, 0.5); }
+  }
+  @keyframes cloud-float {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100vw); }
+  }
+  @keyframes light-sparkle {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
 }
 
 @layer base {
@@ -164,4 +189,70 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
+}
+@utility bokeh {
+  @apply absolute rounded-full;
+  background: radial-gradient(
+    circle at 30% 30%,
+    hsla(var(--primary), 0.35),
+    hsla(var(--primary), 0.08) 60%,
+    transparent 70%
+  );
+  filter: blur(2px);
+  mix-blend-mode: multiply;
+  animation: float-bokeh 12s ease-in-out infinite;
+}
+
+@utility sparkles {
+  @apply absolute rounded-full;
+  background: radial-gradient(circle, rgba(255, 210, 130, 0.95) 0%, rgba(255, 210, 130, 0) 70%);
+  box-shadow: 0 0 8px 2px rgba(255, 210, 130, 0.4);
+  mix-blend-mode: screen;
+  animation: pulse-subtle 3.2s ease-in-out infinite;
+}
+@utility aurora {
+  @apply absolute rounded-full opacity-60;
+  filter: blur(35px) saturate(120%);
+  background: conic-gradient(from 180deg at 50% 50%, rgba(255,179,186,0.5), rgba(255,223,186,0.5), rgba(186,225,255,0.5), rgba(186,255,201,0.4), rgba(255,179,186,0.5));
+  animation: aurora-shift 18s ease-in-out infinite;
+}
+/* New light mode utilities */
+@utility sun {
+  @apply absolute rounded-full bg-gradient-to-b from-yellow-200 to-yellow-400;
+  animation: sun-glow 8s ease-in-out infinite;
+}
+
+@utility cloud {
+  @apply absolute rounded-full opacity-90;
+  background: linear-gradient(
+    to bottom,
+    rgba(240, 246, 255, 0.95),
+    rgba(224, 235, 250, 0.9)
+  );
+  box-shadow: 0 8px 40px rgba(120, 145, 180, 0.18), inset 0 -10px 30px rgba(200, 210, 230, 0.6);
+  border: 1px solid rgba(180, 200, 230, 0.25);
+  filter: blur(6px);
+  animation: cloud-float 28s linear infinite;
+}
+
+/* Cloud bubble pieces for more organic shapes */
+@utility cloud-bubble {
+  @apply absolute rounded-full opacity-90;
+  background: linear-gradient(
+    to bottom,
+    rgba(243, 248, 255, 0.95),
+    rgba(226, 238, 252, 0.9)
+  );
+  box-shadow: 0 6px 30px rgba(120, 145, 180, 0.16), inset 0 -8px 24px rgba(200, 210, 230, 0.55);
+  border: 1px solid rgba(180, 200, 230, 0.2);
+}
+
+@utility sun-hoverable {
+  @apply relative;
+}
+
+@utility light-sparkle {
+  @apply absolute rounded-full bg-yellow-100;
+  mix-blend-mode: overlay;
+  animation: light-sparkle 4s ease-in-out infinite;
 }
