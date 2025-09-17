@@ -5,6 +5,7 @@ import HeroSection from "../components/HeroSection";
 import Navbar from "../components/Navbar";
 import ProjectSection from "../components/ProjectSection";
 import SkillsSection from "../components/SkillsSection";
+import ExperienceSection from "../components/ExperienceSection";
 import StarBackground from "../components/StarBackground";
 import ThemeToggle from "../components/ThemeToggle";
 
@@ -26,12 +27,13 @@ const Home = () => {
         <HeroSection />
         <AboutSection />
         <SkillsSection />
+        <ExperienceSection />
         <ProjectSection />
         <ContactSection />
       </main>
 
       {/* Footer */}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
