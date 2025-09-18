@@ -120,7 +120,7 @@ function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-24 lg:py-28  sm:px-6 lg:px-8 relative overflow-hidden"
     >
       {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-full h-48 sm:h-72 bg-gradient-to-b from-primary/5 to-transparent"></div>
@@ -149,9 +149,9 @@ function ContactSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-          {/* Contact Information */}
-          <div className="lg:col-span-1 space-y-6 sm:space-y-8 order-2 lg:order-1">
+        <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6 sm:gap-8">
+          {/* Contact Information - First on mobile */}
+          <div className="lg:col-span-1 space-y-6 sm:space-y-8 order-1">
             <div className="flex flex-col items-center justify-center bg-gradient-to-br from-card to-card/50 p-6 sm:p-8 rounded-2xl border border-border/30 shadow-lg backdrop-blur-md h-full transition-all duration-500 hover:shadow-xl hover:border-primary/20">
               <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 flex items-center gap-2">
                 Contact Information
@@ -230,8 +230,8 @@ function ContactSection() {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="lg:col-span-2 order-1 lg:order-2">
+          {/* Contact Form - Second on mobile */}
+          <div className="lg:col-span-2 order-2">
             <div className="bg-gradient-to-br from-card to-card/50 p-6 sm:p-8 rounded-2xl border border-border/30 shadow-lg backdrop-blur-md h-full transition-all duration-500 hover:shadow-xl hover:border-primary/20">
               <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 flex items-center gap-2">
                 Send a Message

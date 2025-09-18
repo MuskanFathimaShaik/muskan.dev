@@ -55,7 +55,7 @@ function ExperienceItem({
           </div>
 
           {summary && (
-            <p className="mt-2 sm:mt-3 md:mt-4 text-muted-foreground leading-relaxed border-l-2 border-primary/20 pl-3 sm:pl-4 text-sm md:text-base">
+            <p className="mt-2 sm:mt-3 md:mt-4 text-muted-foreground text-left leading-relaxed border-l-2 border-primary/20 pl-3 sm:pl-4 text-sm md:text-base">
               {summary}
             </p>
           )}
@@ -65,7 +65,7 @@ function ExperienceItem({
               {bullets.map((b, i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-2 text-muted-foreground text-sm md:text-base"
+                  className="flex items-start text-left gap-2 text-muted-foreground text-sm md:text-base"
                 >
                   <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-primary mt-2 md:mt-2.5 flex-shrink-0"></div>
                   <span>{b}</span>
@@ -121,13 +121,13 @@ function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 sm:px-6 lg:px-8 relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute top-0 right-0 w-48 sm:w-72 h-48 sm:h-72 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 left-0 w-48 sm:w-72 h-48 sm:h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto max-w-5xl relative z-10">
+      <div className="container max-w-none sm:max-w-5xl mx-auto relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" /> Professional Journey

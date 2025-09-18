@@ -6,14 +6,17 @@ function HeroSection() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8"
     >
-      <div className="container max-w-5xl mx-auto text-center z-10">
+      <div className="container max-w-6xl sm:max-w-5xl mx-auto text-center z-10">
         <div className="space-y-6 sm:space-y-7 lg:space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium opacity-0 animate-fade-in">
+          <div className="inline-flex items-center  gap-2 px-3 py-1 sm:px-4 sm:py-2 rounded-full bg-primary/10 text-primary text-xs sm:text-sm font-medium opacity-0 animate-fade-in">
             <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" /> Open to Work
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
+          <h1 className="flex flex-wrap sm:flex-nowrap items-center justify-center gap-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight leading-tight">
             <span className="opacity-0 animate-fade-in block sm:inline">
-              Hi, I'm
+              Hi,
+            </span>
+            <span className="opacity-0 animate-fade-in block sm:inline">
+              I'm
             </span>
             <span className="text-primary ml-0 sm:ml-3 opacity-0 animate-fade-in-delay-3 block sm:inline">
               Shaik
@@ -25,7 +28,7 @@ function HeroSection() {
               Fathima
             </span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4 leading-relaxed px-4 sm:px-0">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground md:max-w-2xl mx-auto opacity-0 animate-fade-in-delay-4 leading-relaxed">
             Creative Frontend Developer with backend insight — expert in React,
             TypeScript & Next.js. I craft dynamic, seamless and responsive web
             experiences.

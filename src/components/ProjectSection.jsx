@@ -48,13 +48,13 @@ function ProjectSection() {
   return (
     <section
       id="projects"
-      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 sm:px-6 lg:px-8 relative"
     >
       {/* Background elements */}
       <div className="absolute -top-32 sm:-top-40 -left-24 sm:-left-40 w-64 sm:w-80 h-64 sm:h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-0 w-56 sm:w-72 h-56 sm:h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <div className="container max-w-none sm:max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-blue-500/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             <Github className="h-3 w-3 sm:h-4 sm:w-4" /> Featured Work

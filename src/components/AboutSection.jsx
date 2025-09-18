@@ -13,13 +13,13 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+      className="py-16 sm:py-20 md:py-24 lg:py-28  sm:px-6 lg:px-8 relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute top-1/4 -left-10 sm:-left-20 w-48 sm:w-72 h-48 sm:h-72 bg-primary/5 rounded-full blur-3xl"></div>
       <div className="absolute bottom-1/4 -right-10 sm:-right-20 w-48 sm:w-72 h-48 sm:h-72 bg-purple-500/5 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto max-w-6xl relative z-10">
+      <div className="container max-w-none sm:max-w-6xl mx-auto relative z-10">
         <div className="text-center mb-12 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
             <Sparkles className="h-3 w-3 sm:h-4 sm:w-4" /> About Me
