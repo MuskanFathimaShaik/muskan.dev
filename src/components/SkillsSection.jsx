@@ -192,44 +192,48 @@ function SkillsSection() {
   ];
 
   return (
-    <section id="skills" className="py-28 px-4 relative overflow-hidden">
+    <section
+      id="skills"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    >
       {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-72 bg-gradient-to-b from-primary/5 to-transparent"></div>
-      <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 left-0 w-full h-48 sm:h-72 bg-gradient-to-b from-primary/5 to-transparent"></div>
+      <div className="absolute -bottom-20 sm:-bottom-40 -right-20 sm:-right-40 w-60 sm:w-80 h-60 sm:h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary text-sm font-medium mb-6">
-            <Settings className="h-4 w-4" /> Technical Expertise
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+            <Settings className="h-3 w-3 sm:h-4 sm:w-4" /> Technical Expertise
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 leading-tight">
             My <span className="text-primary">Technical</span> Skills
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed px-4 sm:px-0">
             A comprehensive overview of my technical proficiencies and expertise
             across frontend, backend, and development tools
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-16">
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12 sm:mb-16">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
               className={cn(
-                "flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-300 border",
+                "flex items-center gap-1 sm:gap-2 px-3 sm:px-4 lg:px-5 py-2 sm:py-3 rounded-xl transition-all duration-300 border text-xs sm:text-sm touch-manipulation",
                 activeCategory === category.id
                   ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20"
                   : "bg-card/50 border-border text-foreground hover:bg-card hover:border-primary/30"
               )}
             >
               {category.icon}
-              <span>{category.name}</span>
+              <span className="hidden xs:inline">{category.name}</span>
+              <span className="xs:hidden">{category.name.split(" ")[0]}</span>
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {filteredSkills.map((skill, idx) => (
             <div
               key={idx}
@@ -239,29 +243,31 @@ function SkillsSection() {
             >
               <div
                 className={cn(
-                  "bg-gradient-to-br from-card to-card/80 p-6 rounded-xl border border-border/50 shadow-xs transition-all duration-500 h-full",
+                  "bg-gradient-to-br from-card to-card/80 p-4 sm:p-6 rounded-xl border border-border/50 shadow-xs transition-all duration-500 h-full",
                   "hover:shadow-lg hover:border-primary/30 hover:-translate-y-1",
                   hoveredSkill === skill.name ? "ring-2 ring-primary/20" : ""
                 )}
               >
-                <div className="flex items-start justify-between mb-5">
-                  <div>
-                    <div className="text-2xl mb-2">{skill.icon}</div>
-                    <h3 className="font-semibold text-lg">{skill.name}</h3>
+                <div className="flex items-start justify-between mb-4 sm:mb-5">
+                  <div className="flex-1 min-w-0">
+                    <div className="text-xl sm:text-2xl mb-2">{skill.icon}</div>
+                    <h3 className="font-semibold text-base sm:text-lg truncate">
+                      {skill.name}
+                    </h3>
                     <div className="text-xs text-muted-foreground mt-1 uppercase tracking-wide">
                       {skill.category}
                     </div>
                   </div>
-                  <div className="text-right">
-                    <span className="text-2xl font-bold text-primary">
+                  <div className="text-right flex-shrink-0 ml-2">
+                    <span className="text-lg sm:text-2xl font-bold text-primary">
                       {skill.level}%
                     </span>
                   </div>
                 </div>
 
-                <div className="w-full bg-secondary/50 h-2.5 rounded-full overflow-hidden mt-2">
+                <div className="w-full bg-secondary/50 h-2 sm:h-2.5 rounded-full overflow-hidden mt-2">
                   <div
-                    className="bg-gradient-to-r from-primary to-primary/70 h-2.5 rounded-full origin-left transition-all duration-1000 ease-out"
+                    className="bg-gradient-to-r from-primary to-primary/70 h-2 sm:h-2.5 rounded-full origin-left transition-all duration-1000 ease-out"
                     style={{
                       width:
                         hoveredSkill === skill.name ? `${skill.level}%` : "0%",
@@ -271,11 +277,11 @@ function SkillsSection() {
                   />
                 </div>
 
-                <div className="flex justify-between items-center mt-4">
-                  <div className="text-sm text-muted-foreground">
+                <div className="flex justify-between items-center mt-3 sm:mt-4">
+                  <div className="text-xs sm:text-sm text-muted-foreground">
                     Proficiency level
                   </div>
-                  <ChevronRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <ChevronRight className="h-3 w-3 sm:h-4 sm:w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </div>
 
@@ -286,12 +292,12 @@ function SkillsSection() {
         </div>
 
         {filteredSkills.length === 0 && (
-          <div className="text-center py-12">
-            <Globe className="h-12 w-12 text-muted-foreground mx-auto mb-4 opacity-50" />
-            <h3 className="text-xl font-medium text-muted-foreground">
+          <div className="text-center py-8 sm:py-12">
+            <Globe className="h-8 w-8 sm:h-12 sm:w-12 text-muted-foreground mx-auto mb-4 opacity-50" />
+            <h3 className="text-lg sm:text-xl font-medium text-muted-foreground">
               No skills found in this category
             </h3>
-            <p className="text-muted-foreground/70 mt-2">
+            <p className="text-muted-foreground/70 mt-2 text-sm sm:text-base">
               Try selecting a different category to view relevant skills
             </p>
           </div>

@@ -118,87 +118,96 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-28 px-4 relative overflow-hidden">
+    <section
+      id="contact"
+      className="py-16 sm:py-20 md:py-24 lg:py-28 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+    >
       {/* Animated background elements */}
-      <div className="absolute top-0 left-0 w-full h-72 bg-gradient-to-b from-primary/5 to-transparent"></div>
-      <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div className="absolute top-20 -left-20 w-60 h-60 bg-blue-500/5 rounded-full blur-3xl animate-pulse-slower"></div>
+      <div className="absolute top-0 left-0 w-full h-48 sm:h-72 bg-gradient-to-b from-primary/5 to-transparent"></div>
+      <div className="absolute -bottom-24 sm:-bottom-40 -right-24 sm:-right-40 w-60 sm:w-80 h-60 sm:h-80 bg-purple-500/5 rounded-full blur-3xl animate-pulse-subtle"></div>
+      <div className="absolute top-16 sm:top-20 -left-16 sm:-left-20 w-44 sm:w-60 h-44 sm:h-60 bg-blue-500/5 rounded-full blur-3xl"></div>
 
       {/* Floating elements */}
-      <div className="absolute top-1/4 left-10 animate-float">
-        <div className="w-6 h-6 rounded-full bg-primary/20"></div>
+      <div className="absolute top-1/4 left-6 sm:left-10 animate-float">
+        <div className="w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-primary/20"></div>
       </div>
-      <div className="absolute bottom-1/3 right-16 animate-float-reverse">
-        <div className="w-4 h-4 rounded-full bg-purple-500/30"></div>
+      <div className="absolute bottom-1/3 right-10 sm:right-16 animate-float-reverse">
+        <div className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-purple-500/30"></div>
       </div>
 
       <div className="container mx-auto max-w-6xl relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary text-sm font-medium mb-6 border border-primary/20 backdrop-blur-sm">
-            <MessageCircle className="h-4 w-4" /> Let's Connect
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-r from-primary/10 to-purple-500/10 text-primary text-xs sm:text-sm font-medium mb-4 sm:mb-6 border border-primary/20 backdrop-blur-sm">
+            <MessageCircle className="h-3 w-3 sm:h-4 sm:w-4" /> Let's Connect
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mt-3 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/70 leading-tight">
             Get In <span className="text-primary">Touch</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto">
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed px-4 sm:px-0">
             Have a project in mind or want to collaborate? I'm always open to
             discussing new opportunities and turning ideas into reality.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
           {/* Contact Information */}
-          <div className="lg:col-span-1 space-y-8">
-            <div className="flex flex-col items-center justify-center bg-gradient-to-br from-card to-card/50 p-8 rounded-2xl border border-border/30 shadow-lg backdrop-blur-md h-full transition-all duration-500 hover:shadow-xl hover:border-primary/20">
-              <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
+          <div className="lg:col-span-1 space-y-6 sm:space-y-8 order-2 lg:order-1">
+            <div className="flex flex-col items-center justify-center bg-gradient-to-br from-card to-card/50 p-6 sm:p-8 rounded-2xl border border-border/30 shadow-lg backdrop-blur-md h-full transition-all duration-500 hover:shadow-xl hover:border-primary/20">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 flex items-center gap-2">
                 Contact Information
               </h3>
 
-              <div className="space-y-6">
-                <div className="flex items-start gap-4 group transform transition-transform duration-300 hover:-translate-y-1">
-                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
-                    <Mail className="h-6 w-6 text-primary" />
+              <div className="space-y-5 sm:space-y-6 w-full">
+                <div className="flex items-start gap-3 sm:gap-4 group transform transition-transform duration-300 hover:-translate-y-1">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                    <Mail className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </div>
-                  <div className="flex flex-col items-center justify-center w-full max-w-[250px]">
-                    <h4 className="font-medium text-foreground">Email</h4>
+                  <div className="flex flex-col w-full min-w-0">
+                    <h4 className="font-medium text-foreground text-sm sm:text-base">
+                      Email
+                    </h4>
                     <a
                       href="mailto:skmuskanfathima136@gmail.com"
-                      className="text-muted-foreground hover:text-primary transition-colors duration-300"
+                      className="text-muted-foreground text-sm hover:text-primary transition-colors duration-300 truncate"
                     >
                       skmuskanfathima136@gmail.com
                     </a>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 group transform transition-transform duration-300 hover:-translate-y-1">
-                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
-                    <MapPin className="h-6 w-6 text-primary" />
+                <div className="flex items-start gap-3 sm:gap-4 group transform transition-transform duration-300 hover:-translate-y-1">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                    <MapPin className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </div>
-                  <div className="flex flex-col items-center justify-center w-full max-w-[250px]">
-                    <h4 className="font-medium text-foreground">Location</h4>
-                    <p className="text-muted-foreground">
+                  <div className="flex flex-col w-full min-w-0">
+                    <h4 className="font-medium text-foreground text-sm sm:text-base">
+                      Location
+                    </h4>
+                    <p className="text-muted-foreground text-sm truncate">
                       Hyderabad, Telangana, India
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 group transform transition-transform duration-300 hover:-translate-y-1">
-                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
-                    <Calendar className="h-6 w-6 text-primary" />
+                <div className="flex items-start gap-3 sm:gap-4 group transform transition-transform duration-300 hover:-translate-y-1">
+                  <div className="p-2.5 sm:p-3 rounded-xl bg-primary/10 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                    <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </div>
-                  <div className="flex flex-col items-center justify-center w-full max-w-[250px]">
-                    <h4 className="font-medium text-foreground">
+                  <div className="flex flex-col w-full min-w-0">
+                    <h4 className="font-medium text-foreground text-sm sm:text-base">
                       Availability
                     </h4>
-                    <p className="text-muted-foreground">
+                    <p className="text-muted-foreground text-sm truncate">
                       Response within 24 hours
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="pt-12">
-                <h4 className="font-medium mb-4 text-foreground">Follow Me</h4>
+              <div className="pt-10 sm:pt-12">
+                <h4 className="font-medium mb-3 sm:mb-4 text-foreground">
+                  Follow Me
+                </h4>
                 <div className="flex gap-3 items-center justify-center">
                   <a
                     href="https://www.linkedin.com/in/muskan-fathima-shaik-9a6817331/"
@@ -222,14 +231,14 @@ function ContactSection() {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <div className="bg-gradient-to-br from-card to-card/50 p-8 rounded-2xl border border-border/30 shadow-lg backdrop-blur-md h-full transition-all duration-500 hover:shadow-xl hover:border-primary/20">
-              <h3 className="text-2xl font-semibold mb-8 flex items-center gap-2">
+          <div className="lg:col-span-2 order-1 lg:order-2">
+            <div className="bg-gradient-to-br from-card to-card/50 p-6 sm:p-8 rounded-2xl border border-border/30 shadow-lg backdrop-blur-md h-full transition-all duration-500 hover:shadow-xl hover:border-primary/20">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-6 sm:mb-8 flex items-center gap-2">
                 Send a Message
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-2">
                     <label
                       htmlFor="name"
@@ -318,11 +327,12 @@ function ContactSection() {
                 <button
                   type="submit"
                   className={cn(
-                    "cosmic-button w-full flex items-center justify-center gap-2 group mt-4 transform transition-transform duration-300 hover:-translate-y-1",
+                    "cosmic-button w-full flex items-center justify-center gap-2 group mt-3 sm:mt-4 transform transition-transform duration-300 hover:-translate-y-1",
                     isSubmitting &&
                       "opacity-80 cursor-not-allowed hover:transform-none"
                   )}
                   disabled={isSubmitting}
+                  aria-busy={isSubmitting}
                 >
                   {isSubmitting ? (
                     <>

@@ -33,7 +33,6 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [activeHoverEffect, setActiveHoverEffect] = useState(1); // 1, 2, or 3 for different effects
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,8 +49,28 @@ function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleMobileNavClick = (href) => (e) => {
+    e.preventDefault();
+    const id = href.replace("#", "");
+    const target = document.getElementById(id);
+    setIsMenuOpen(false);
+    if (target) {
+      // Update hash for accessibility/history without jump
+      if (history.replaceState) {
+        history.replaceState(null, "", href);
+      } else {
+        window.location.hash = href;
+      }
+      setTimeout(() => {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+        target.setAttribute("tabindex", "-1");
+        target.focus({ preventScroll: true });
+      }, 50);
+    }
+  };
+
   // Effect 1: Underline with gradient that expands from center
-  const renderEffect1 = (item, idx) => (
+  const renderNavItem = (item, idx) => (
     <a
       href={item.href}
       key={idx}
@@ -67,61 +86,13 @@ function Navbar() {
     </a>
   );
 
-  // Effect 2: Background highlight with rounded corners
-  const renderEffect2 = (item, idx) => (
-    <a
-      href={item.href}
-      key={idx}
-      className="relative group text-foreground/80 hover:text-primary transition-colors duration-300 px-3 py-1 rounded-lg"
-      onClick={(e) => {
-        e.preventDefault();
-        const id = item.href.replace("#", "");
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }}
-    >
-      {item.name}
-      <span className="absolute inset-0 bg-primary/10 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300 -z-10"></span>
-    </a>
-  );
-
-  // Effect 3: Dual underline with sparkle effect
-  const renderEffect3 = (item, idx) => (
-    <a
-      href={item.href}
-      key={idx}
-      className="relative group text-foreground/80 hover:text-primary transition-colors duration-300 px-2 py-1"
-      onClick={(e) => {
-        e.preventDefault();
-        const id = item.href.replace("#", "");
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }}
-    >
-      {item.name}
-      <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-      <span className="absolute -bottom-0.5 left-1/2 w-0 h-0.5 bg-purple-400 transition-all duration-500 group-hover:w-4 group-hover:left-1/2 group-hover:-translate-x-1/2"></span>
-      <Sparkles className="absolute -top-2 -right-3 h-3 w-3 text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-    </a>
-  );
-
-  // Choose which effect to render
-  const renderNavItem = (item, idx) => {
-    switch (activeHoverEffect) {
-      case 1:
-        return renderEffect1(item, idx);
-      case 2:
-        return renderEffect2(item, idx);
-      case 3:
-        return renderEffect3(item, idx);
-      default:
-        return renderEffect1(item, idx);
-    }
-  };
-
   return (
     <nav
       className={cn(
         "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-5 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        isScrolled
+          ? "py-3 sm:py-4 md:py-5 bg-background/80 backdrop-blur-md shadow-xs"
+          : "py-3 sm:py-4 md:py-5"
       )}
     >
       {/* Scroll Progress Bar */}
@@ -132,91 +103,83 @@ function Navbar() {
         />
       </div>
 
-      <div className="container flex items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         <a
-          className="text-xl font-bold text-primary flex items-center group"
+          className="text-lg sm:text-xl font-bold text-primary flex items-center group"
           href="#hero"
         >
           <div className="relative flex items-center">
             <div className="absolute -inset-2 bg-primary/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <span className="relative z-10 flex items-center gap-2">
+            <span className="relative z-10 flex items-center gap-1 sm:gap-2">
               <div className="relative">
                 <Sparkles
-                  className="h-6 w-6 text-primary"
+                  className="h-5 w-5 sm:h-6 sm:w-6 text-primary"
                   fill="currentColor"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-primary to-purple-500 rounded-full opacity-70 animate-pulse-slow"></div>
               </div>
-              <span className="text-glow text-foreground font-semibold tracking-tight">
+              <span className="text-glow text-foreground font-semibold tracking-tight text-sm sm:text-base">
                 Muskan
-              </span>
-              <span className="text-foreground/70 font-normal">
-                | Portfolio
               </span>
             </span>
           </div>
         </a>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Desktop Nav with increased gap */}
+        <div className="hidden lg:flex items-center gap-6 xl:gap-8">
           {navItems.map((item, idx) => renderNavItem(item, idx))}
         </div>
 
-        {/* Mobile Nav */}
+        {/* Mobile Nav Button */}
         <button
           onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
+          className="lg:hidden p-2 sm:p-3 text-foreground z-50 rounded-lg hover:bg-primary/10 transition-colors duration-300 touch-manipulation"
           aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          aria-expanded={isMenuOpen}
+          aria-controls="mobile-menu"
         >
-          {isMenuOpen ? <X size={24} /> : <MenuIcon size={24} />}
+          {isMenuOpen ? (
+            <X size={20} className="sm:w-6 sm:h-6" />
+          ) : (
+            <MenuIcon size={20} className="sm:w-6 sm:h-6" />
+          )}
         </button>
 
+        {/* Mobile Menu Overlay */}
         <div
+          id="mobile-menu"
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
+            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-start pt-24 pb-16 overflow-y-auto safe-px",
+            "transition-all duration-300 lg:hidden",
             isMenuOpen
               ? "opacity-100 pointer-events-auto"
               : "opacity-0 pointer-events-none"
           )}
         >
-          <div className="flex flex-col space-y-8 text-2xl items-center">
+          <div className="flex flex-col w-full max-w-md space-y-6 sm:space-y-8 text-xl sm:text-2xl items-center">
             {navItems.map((item, idx) => (
               <a
                 href={item.href}
                 key={idx}
-                className="text-foreground/90 hover:text-primary transition-colors duration-300 py-2 relative group"
-                onClick={(e) => {
-                  e.preventDefault();
-                  const id = item.href.replace("#", "");
-                  document
-                    .getElementById(id)
-                    ?.scrollIntoView({ behavior: "smooth" });
-                  setIsMenuOpen(false);
-                }}
+                className="w-full text-center text-foreground/90 hover:text-primary transition-colors duration-300 py-2 sm:py-3 relative group touch-manipulation"
+                onClick={handleMobileNavClick(item.href)}
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-500 transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-500 transition-all duration-300 group-hover:w-24"></span>
               </a>
             ))}
-            <div className="pt-4 flex items-center gap-4">
+            <div className="pt-4 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
               <a
                 href="#"
-                className="px-4 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
+                className="px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300 text-sm sm:text-base touch-manipulation"
                 onClick={(e) => e.preventDefault()}
               >
                 Resume
               </a>
               <a
                 href="#contact"
-                className="cosmic-button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" });
-                  setIsMenuOpen(false);
-                }}
+                className="cosmic-button text-sm sm:text-base touch-manipulation"
+                onClick={handleMobileNavClick("#contact")}
               >
                 Hire Me
               </a>

@@ -256,3 +256,13 @@
   mix-blend-mode: overlay;
   animation: light-sparkle 4s ease-in-out infinite;
 }
+
+/* New small utilities */
+@utility safe-px {
+  padding-left: max(1rem, env(safe-area-inset-left));
+  padding-right: max(1rem, env(safe-area-inset-right));
+}
+
+@utility prevent-overflow-x {
+  overflow-x: hidden;
+}
