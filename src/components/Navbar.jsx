@@ -4,10 +4,6 @@ import { MenuIcon, Sparkles, X } from "lucide-react";
 
 const navItems = [
   {
-    name: "Home",
-    href: "#hero",
-  },
-  {
     name: "About",
     href: "#about",
   },
@@ -149,41 +145,25 @@ function Navbar() {
         <div
           id="mobile-menu"
           className={cn(
-            "fixed inset-0 bg-background/95 backdrop-blur-md z-40 flex flex-col items-center justify-start pt-24 pb-16 overflow-y-auto safe-px",
-            "transition-all duration-300 lg:hidden",
+            "fixed inset-0 bg-background/95 backdrop-blur-md h-[15rem] z-40 flex flex-col items-center justify-start py-4 overflow-y-auto safe-px",
+            "transition-all duration-500 ease-in-out lg:hidden",
             isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-5 pointer-events-none"
           )}
         >
-          <div className="flex flex-col w-full max-w-md space-y-6 sm:space-y-8 text-xl sm:text-2xl items-center">
+          <div className="flex flex-col w-full max-w-md pt-4  sm:space-y-8 text-sm sm:text-2xl items-center">
             {navItems.map((item, idx) => (
               <a
                 href={item.href}
                 key={idx}
-                className="w-full text-center text-foreground/90 hover:text-primary transition-colors duration-300 py-2 sm:py-3 relative group touch-manipulation"
+                className="w-full text-center font-semibold text-foreground/90 hover:text-primary transition-colors duration-300 py-2 sm:py-3 relative group touch-manipulation"
                 onClick={handleMobileNavClick(item.href)}
               >
                 {item.name}
                 <span className="absolute left-1/2 -bottom-1 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-500 transition-all duration-300 group-hover:w-24"></span>
               </a>
             ))}
-            <div className="pt-4 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
-              <a
-                href="#"
-                className="px-4 py-2 sm:px-6 sm:py-3 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300 text-sm sm:text-base touch-manipulation"
-                onClick={(e) => e.preventDefault()}
-              >
-                Resume
-              </a>
-              <a
-                href="#contact"
-                className="cosmic-button text-sm sm:text-base touch-manipulation"
-                onClick={handleMobileNavClick("#contact")}
-              >
-                Hire Me
-              </a>
-            </div>
           </div>
         </div>
       </div>
