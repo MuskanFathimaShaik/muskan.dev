@@ -15,9 +15,8 @@ import {
   Wind,
   RefreshCw,
   Map,
-  Circle,
-  Train,
-  Leaf,
+  Server,
+  Boxes,
   Plug,
   Network,
   Mail,
@@ -87,30 +86,32 @@ const skills = [
     icon: <Map className="h-5 w-5" />,
   },
 
-  // Backend
+  // Backend (basic insight only)
   {
     name: "Node.js",
-    level: 78,
+    level: 70,
     category: "backend",
-    icon: <Circle className="h-5 w-5" />,
+    icon: <Server className="h-5 w-5" />,
   },
   {
     name: "Express.js",
-    level: 75,
+    level: 40,
     category: "backend",
-    icon: <Train className="h-5 w-5" />,
+    icon: <Boxes className="h-5 w-5" />,
   },
+
+  // Database
   {
     name: "MongoDB",
-    level: 72,
-    category: "backend",
-    icon: <Leaf className="h-5 w-5" />,
+    level: 40,
+    category: "database",
+    icon: <Database className="h-5 w-5" />,
   },
   {
-    name: "PostgreSQL",
-    level: 65,
-    category: "backend",
-    icon: <Database className="w-5 h-5" />,
+    name: "MySQL",
+    level: 50,
+    category: "database",
+    icon: <Database className="h-5 w-5" />,
   },
 
   // Tools & Practices
@@ -187,7 +188,12 @@ function SkillsSection() {
   const categories = [
     { id: "all", name: "All Skills", icon: <Sparkles className="h-4 w-4" /> },
     { id: "frontend", name: "Frontend", icon: <Code className="h-4 w-4" /> },
-    { id: "backend", name: "Backend", icon: <Database className="h-4 w-4" /> },
+    { id: "backend", name: "Backend", icon: <Server className="h-4 w-4" /> },
+    {
+      id: "database",
+      name: "Database",
+      icon: <Database className="h-4 w-4" />,
+    },
     { id: "tools", name: "Tools", icon: <Settings className="h-4 w-4" /> },
   ];
 
